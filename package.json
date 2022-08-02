@@ -1,0 +1,26 @@
+{
+  "name": "system-design",
+  "version": "1.0.0",
+  "description": "System Design LLD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjuinlv/system-design.git"
+  },
+  "keywords": [
+    "SystemDesign",
+    "LLD"
+  ],
+  "author": "Sanjay Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjuinlv/system-design/issues"
+  },
+  "homepage": "https://github.com/sanjuinlv/system-design#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}

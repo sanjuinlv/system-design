@@ -175,3 +175,7 @@ class InRoomPurchaseCharges implements BaseRoomCharge {
     this.cost = cost;
   }
 }
+
+//this to avoid the duplicate identifier issue due to class in class name,
+//e,g, Person, declared in other file
+export {};

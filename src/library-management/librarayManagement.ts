@@ -72,19 +72,19 @@ class SystemUser extends Person {
 
 class Member extends SystemUser {
   private totalBookCheckout: number;
-  private searchObj: Search;
+  private searchObj: SearchService;
   private issueService: BookIssueService;
 }
 
 class Librarian extends SystemUser {
-  private searchObj: Search;
+  private searchObj: SearchService;
   private issueService: BookIssueService;
 
   private empId: number;
 
-  addBookItem(book: BookItem): void {}
-  editBookItem(book: BookItem): void {}
-  removeBookItem(barCode: string): void {}
+  public addBookItem(book: BookItem): void {}
+  public editBookItem(book: BookItem): void {}
+  public removeBookItem(barCode: string): void {}
 }
 
 class Account {
@@ -93,40 +93,49 @@ class Account {
   private accountId: number;
 }
 
-class Search {
-  getBookByTitle(title: string): Book[] {
+class SearchService {
+  public getBookByTitle(title: string): Book[] {
     return [];
   }
-  getBookByAuthor(author: Author): Book[] {
+  public getBookByAuthor(author: Author): Book[] {
     return [];
   }
-  getBookByType(bookType: BookType): Book[] {
+  public getBookByType(bookType: BookType): Book[] {
     return [];
   }
-  getBookByPublicationDate(publicationDate: Date): Book[] {
+  public getBookByPublicationDate(publicationDate: Date): Book[] {
     return [];
   }
 }
 
 class BookIssueService {
   private fine: Fine;
-  getReservationDetails(): BookReservationDetail {
+  public getReservationDetails(): BookReservationDetail {
     return null;
   }
-  updateReservationDetails(
+  public updateReservationDetails(
     bookReservationDetail: BookReservationDetail
   ): void {}
-  reserveBook(bookItem: BookItem, user: SystemUser): BookReservationDetail {
+  public reserveBook(
+    bookItem: BookItem,
+    user: SystemUser
+  ): BookReservationDetail {
     return null;
   }
-  issueBook(bookItem: BookItem, user: SystemUser): BookReservationDetail {
+  public issueBook(
+    bookItem: BookItem,
+    user: SystemUser
+  ): BookReservationDetail {
     return null;
   }
   // it will internally call the issueBook function after basic validations
-  renewBook(bookItem: BookItem, user: SystemUser): BookReservationDetail {
+  public renewBook(
+    bookItem: BookItem,
+    user: SystemUser
+  ): BookReservationDetail {
     return null;
   }
-  returnBook(bookItem: BookItem, user: SystemUser): void {}
+  public returnBook(bookItem: BookItem, user: SystemUser): void {}
 }
 
 class BookLending {
@@ -147,13 +156,13 @@ class Fine {
   private user: SystemUser;
   private book: BookItem;
   private fineDate: Date;
-  calculateFine(days: number): number {
+  public calculateFine(days: number): number {
     return 0;
   }
 }
 
 class System {
-  sendNotification(): void {}
+  public sendNotification(): void {}
 }
 
 export {};

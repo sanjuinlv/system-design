@@ -76,8 +76,8 @@ class HouseKeeper extends Person {
 }
 
 class Guest extends Person {
-  private searchObj: Search;
-  private bookObj: Booking;
+  private searchObj: SearchService;
+  private bookObj: BookingService;
 
   public createBooking(): RoomBooking {
     return null;
@@ -91,8 +91,8 @@ class Guest extends Person {
 }
 
 class Receptionist extends Person {
-  private searchObj: Search;
-  private bookObj: Booking;
+  private searchObj: SearchService;
+  private bookObj: BookingService;
   public checkInGuest(guest: Guest, bookingInfo: RoomBooking): void {}
   public checkOutGuest(guest: Guest, bookingInfo: RoomBooking): void {}
 }
@@ -103,7 +103,7 @@ class Admin extends Person {
   public editRoom(roomDetails: Room): void {}
 }
 
-class Search {
+class SearchService {
   public searchRoom(
     roomStyle: RoomStyle,
     startDate: Date,
@@ -125,7 +125,7 @@ class RoomBooking {
   private totalRoomCharges: number;
 }
 
-class Booking {
+class BookingService {
   public createBooking(guestInfo: Guest) {}
   public cancelBooking(bookingId: number) {}
 }
@@ -140,10 +140,10 @@ interface BaseRoomCharge {
 
 class RoomCharge implements BaseRoomCharge {
   private cost: number;
-  getCost(): number {
+  public getCost(): number {
     return this.cost;
   }
-  setCost(cost): void {
+  public setCost(cost): void {
     this.cost = cost;
   }
 }
@@ -154,10 +154,10 @@ class RoomServiceCharge implements BaseRoomCharge {
   constructor(baseRoomCharge: BaseRoomCharge) {
     this.baseRoomCharge = baseRoomCharge;
   }
-  getCost(): number {
+  public getCost(): number {
     return this.baseRoomCharge.getCost() + this.cost;
   }
-  setCost(cost): void {
+  public setCost(cost): void {
     this.cost = cost;
   }
 }
@@ -168,10 +168,10 @@ class InRoomPurchaseCharges implements BaseRoomCharge {
   constructor(baseRoomCharge: BaseRoomCharge) {
     this.baseRoomCharge = baseRoomCharge;
   }
-  getCost(): number {
+  public getCost(): number {
     return this.baseRoomCharge.getCost() + this.cost;
   }
-  setCost(cost): void {
+  public setCost(cost): void {
     this.cost = cost;
   }
 }

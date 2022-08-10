@@ -13,29 +13,29 @@ class Customer {
   private searchService: SearchService;
 
   //operations
-  getShoppingCart(customerId: string): ShoppingCart {
+  public getShoppingCart(customerId: string): ShoppingCart {
     return null;
   }
-  addItemToShoppingCart(item: Item): void {}
-  updateItemToShoppingCart(item: Item): void {}
-  removeItemFromShoppingCart(item: Item): void {}
+  public addItemToShoppingCart(item: Item): void {}
+  public updateItemToShoppingCart(item: Item): void {}
+  public removeItemFromShoppingCart(item: Item): void {}
 }
 
 class Guest extends Customer {
-  registerAccount(): Account {
+  public registerAccount(): Account {
     return null;
   }
 }
 
 class Member extends Customer {
-  placeOrder(cart: ShoppingCart): OrderStatus {
+  public placeOrder(cart: ShoppingCart): OrderStatus {
     return null;
   }
-  addReview(review: ProductReview): void {}
+  public addReview(review: ProductReview): void {}
 }
 
 class Seller extends Customer {
-  addProduct(product: Product): void {}
+  public addProduct(product: Product): void {}
 }
 
 class Account {
@@ -66,14 +66,14 @@ class ShoppingCart {
   private item: Array<Item>;
   private cartValue: number;
 
-  addItem(item: Item): void {}
-  updateItem(item: Item): void {}
-  removeItem(item: Item): void {}
-  getItems(): Array<Item> {
+  public addItem(item: Item): void {}
+  public updateItem(item: Item): void {}
+  public removeItem(item: Item): void {}
+  public getItems(): Array<Item> {
     return [];
   }
-  checkoutItems(): void {}
-  getCartValue(): number {
+  public checkoutItems(): void {}
+  public getCartValue(): number {
     return 0;
   }
 }
@@ -108,10 +108,10 @@ class ProductReview {
 }
 
 class SearchService {
-  searchByName(): Array<Product> {
+  public searchByName(): Array<Product> {
     return [];
   }
-  searchByCategory(): Array<Product> {
+  public searchByCategory(): Array<Product> {
     return [];
   }
 }
@@ -134,14 +134,15 @@ class OrderLog {
 
 class OrderService {
   private notificationService: NotificationService;
-  placeOrder(order: Order): OrderStatus {
+  public placeOrder(order: Order): OrderStatus {
     return null;
   }
-  trackOrder(orderId: number): OrderStatus {
+  public trackOrder(orderId: number): OrderStatus {
     return null;
   }
-  addOrderLog(ordrLog: OrderLog): void {}
-  makePayment(paymentTyep: PaymentType): PaymentStatus {
+  public addOrderLog(ordrLog: OrderLog): void {}
+  //this should call to Payment Service
+  public makePayment(paymentTyep: PaymentType): PaymentStatus {
     return null;
   }
 }
@@ -197,7 +198,7 @@ class Shipment {
 class NotificationService {
   private notification: Notification;
   //calling class (Order in this case) passes the notification type and message to be sent
-  sendNotification(notification: Notification, message: Message): void {
+  public sendNotification(notification: Notification, message: Message): void {
     notification.sendNotification(message);
   }
 }
@@ -207,15 +208,15 @@ interface Notification {
 }
 
 class EmailNotification implements Notification {
-  sendNotification(message: Message): void {}
+  public sendNotification(message: Message): void {}
 }
 
 class SMSNotification implements Notification {
-  sendNotification(message: Message): void {}
+  public sendNotification(message: Message): void {}
 }
 
 class WhatsAppNotification implements Notification {
-  sendNotification(message: Message): void {}
+  public sendNotification(message: Message): void {}
 }
 
 class Message {
@@ -223,3 +224,5 @@ class Message {
   private from: string;
   private message: string;
 }
+
+export {};
